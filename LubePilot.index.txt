@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LubePilot — AI Lubricant Advisor</title>
+    
+    <!-- Load Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Configure custom theme colors and font -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'black-bg': '#0B0B0B',       // Primary background (Deep Black)
+                        'accent-red': '#C00000',     // Industrial Red
+                        'highlight-gold': '#FFD700', // Metallic Gold
+                        'text-light': '#E0E0E0',     // Light Gray text
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Base styles */
+        body { 
+            background-color: #0B0B0B; 
+            color: #E0E0E0;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        /* Hero image blending for industrial feel */
+        #hero-section {
+            /* FINAL, GUARANTEED FIX: High-contrast Base64 SVG pattern resembling a repeating industrial grate/machinery. */
+            background-image: 
+                /* 1. Industrial Grid Pattern (High Contrast Base64 SVG) */
+                url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'><rect width='80' height='80' fill='%230B0B0B'/><path d='M80 0H0v80h80V0zM40 80V0M0 40h80' stroke-width='1' stroke='%23303030'/><circle cx='40' cy='40' r='3' fill='%23C00000'/></svg>"),
+                
+                /* 2. Red Spotlight Effect (Pure CSS - blended on top of the pattern) */
+                radial-gradient(circle at center, rgba(192, 0, 0, 0.35) 0%, rgba(11, 11, 11, 0) 75%);
+                
+            background-color: #0B0B0B;
+            background-size: 80px, cover; /* Apply size to pattern, cover to gradient */
+            background-repeat: repeat, no-repeat;
+            background-position: center;
+            position: relative;
+        }
+
+        /* Dark overlay for text contrast and pattern visibility */
+        #hero-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            /* Reduced opacity to make the pattern clearly visible */
+            background: rgba(0, 0, 0, 0.40);
+            z-index: 1;
+        }
+        
+        /* Ensures content is above the background */
+        #hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Custom subtle gold shadow/glow for hover effects */
+        .gold-glow-hover:hover {
+            box-shadow: 0 0 10px #FFD700;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Header -->
+    <header class="sticky top-0 z-50 bg-black-bg/95 backdrop-blur-sm shadow-xl">
+        <nav class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- Logo & Branding -->
+            <div class="flex items-center">
+                <!-- Custom Gold Logo: Upside-Down Droplet (Cleaned) -->
+                <svg class="w-8 h-8 mr-2" viewBox="0 0 24 24" fill="#FFD700" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Droplet Shape, inverted to point up, and no internal lines -->
+                    <path d="M12 22C7.5 22 4 18.5 4 14.0c0-4.0 8-12 8-12s8 8 8 12c0 4.5-3.5 8-8 8z"/>
+                </svg>
+                <span class="text-3xl font-extrabold tracking-wide" style="color: #FFD700;">LubePilot</span>
+            </div>
+
+            <!-- Call to Action Button -->
+            <a href="#services" class="text-text-light border-2 border-highlight-gold font-semibold py-2 px-6 rounded-lg transition duration-300 hover:bg-accent-red hover:text-white hover:border-accent-red gold-glow-hover">
+                Our Services
+            </a>
+        </nav>
+    </header>
+
+    <main>
+        
+        <!-- Hero Section -->
+        <section id="hero-section" class="py-24 md:py-40 flex items-center justify-center">
+            
+            <div id="hero-content" class="max-w-4xl mx-auto px-6 text-center">
+                
+                <h1 class="text-5xl sm:text-6xl md:text-7xl font-extrabold mb-6 leading-tight" style="color: #FFD700;">
+                    LubePilot — <span class="text-text-light">AI Lubricant Advisor &</span> Used Oil Analysis Interpreter
+                </h1>
+                
+                <p class="text-xl md:text-2xl mb-10 font-light max-w-3xl mx-auto" style="color: #E0E0E0;">
+                    Empowering engineers with intelligent lubricant recommendations and precise oil condition analysis.
+                </p>
+                
+                <!-- Hero Button (Duplicate for visibility) -->
+                <a href="#services" class="inline-block text-text-light border-2 border-highlight-gold font-semibold text-lg py-3 px-10 rounded-xl transition duration-300 hover:bg-accent-red hover:text-white hover:border-accent-red gold-glow-hover">
+                    Our Services
+                </a>
+            </div>
+        </section>
+
+        <!-- Section 1: About LubePilot -->
+        <section id="about" class="py-16 md:py-24">
+            <div class="max-w-4xl mx-auto px-6 text-center">
+                <h2 class="text-4xl font-bold mb-8" style="color: #FFD700;">About LubePilot</h2>
+                <p class="text-xl leading-relaxed max-w-3xl mx-auto" style="color: #E0E0E0;">
+                    LubePilot combines mechanical engineering knowledge and AI intelligence to recommend optimal lubricants and interpret used oil reports instantly. Designed for maintenance and reliability engineers seeking data-driven insights.
+                </p>
+            </div>
+        </section>
+
+        <!-- Section 2: Our Services -->
+        <section id="services" class="py-16 md:py-24 bg-[#151515]">
+            <div class="max-w-7xl mx-auto px-6">
+                <h2 class="text-4xl font-bold text-center mb-16" style="color: #FFD700;">Our Services & Expertise</h2>
+                
+                <!-- Service Cards Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    
+                    <!-- Card 1: Lubricant Recommendation -->
+                    <div class="bg-black-bg p-8 rounded-xl shadow-2xl border-t-4 border-accent-red text-center gold-glow-hover transition duration-300 transform hover:scale-[1.03]">
+                        <!-- Icon: Gear/Cog -->
+                        <svg class="w-12 h-12 mx-auto mb-4" viewBox="0 0 24 24" fill="none" stroke="#FFD700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33 1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82 1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                        <h3 class="text-lg font-semibold mt-2" style="color: #E0E0E0;">Lubricant Recommendation by Equipment Builder</h3>
+                    </div>
+
+                    <!-- Card 2: Industrial Lubricants -->
+                    <div class="bg-black-bg p-8 rounded-xl shadow-2xl border-t-4 border-accent-red text-center gold-glow-hover transition duration-300 transform hover:scale-[1.03]">
+                        <!-- Icon: Factory Building -->
+                        <svg class="w-12 h-12 mx-auto mb-4" viewBox="0 0 24 24" fill="none" stroke="#FFD700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22V10h16v12M2 10l10-8 10 8M6 18h4M14 18h4M6 14h4M14 14h4"/></svg>
+                        <h3 class="text-lg font-semibold mt-2" style="color: #E0E0E0;">Industrial Lubricants by Application</h3>
+                    </div>
+
+                    <!-- Card 3: Machine Shop -->
+                    <div class="bg-black-bg p-8 rounded-xl shadow-2xl border-t-4 border-accent-red text-center gold-glow-hover transition duration-300 transform hover:scale-[1.03]">
+                        <!-- Icon: Tool/Wrench -->
+                        <svg class="w-12 h-12 mx-auto mb-4" viewBox="0 0 24 24" fill="none" stroke="#FFD700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 10.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-4.24 4.24a2 2 0 0 1-2.83 0l-1.41-1.41a2 2 0 0 1 0-2.83l4.24-4.24a6 6 0 0 1 7.94-7.94l-3.77 3.77z"/></svg>
+                        <h3 class="text-lg font-semibold mt-2" style="color: #E0E0E0;">Machine Shop Lubricants</h3>
+                    </div>
+                    
+                    <!-- Card 4: Industrial Sectors -->
+                    <div class="bg-black-bg p-8 rounded-xl shadow-2xl border-t-4 border-accent-red text-center gold-glow-hover transition duration-300 transform hover:scale-[1.03]">
+                        <!-- Icon: Globe/Sectors -->
+                        <svg class="w-12 h-12 mx-auto mb-4" viewBox="0 0 24 24" fill="none" stroke="#FFD700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10zM2.1 12h19.8"/></svg>
+                        <h3 class="text-lg font-semibold mt-2" style="color: #E0E0E0;">Industrial Sectors</h3>
+                    </div>
+
+                </div>
+
+                <!-- Industrial Sectors List -->
+                <div class="mt-16 max-w-4xl mx-auto">
+                    <h3 class="text-2xl font-bold text-center mb-6" style="color: #C00000;">Key Sectors We Support</h3>
+                    <div class="flex flex-wrap justify-center gap-4 text-center">
+                        <span class="bg-accent-red/20 text-text-light font-medium py-2 px-6 rounded-full border border-accent-red transition duration-300 hover:bg-accent-red">Plastics</span>
+                        <span class="bg-accent-red/20 text-text-light font-medium py-2 px-6 rounded-full border border-accent-red transition duration-300 hover:bg-accent-red">Mining</span>
+                        <span class="bg-accent-red/20 text-text-light font-medium py-2 px-6 rounded-full border border-accent-red transition duration-300 hover:bg-accent-red">Energy</span>
+                        <span class="bg-accent-red/20 text-text-light font-medium py-2 px-6 rounded-full border border-accent-red transition duration-300 hover:bg-accent-red">Steel</span>
+                        <span class="bg-accent-red/20 text-text-light font-medium py-2 px-6 rounded-full border border-accent-red transition duration-300 hover:bg-accent-red">Chemical Processing</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Section 3: AI Capabilities -->
+        <section id="ai-capabilities" class="py-16 md:py-24">
+            <div class="max-w-4xl mx-auto px-6 text-center">
+                <h2 class="text-4xl font-bold mb-8" style="color: #FFD700;">AI Capabilities</h2>
+                <p class="text-xl leading-relaxed max-w-3xl mx-auto" style="color: #E0E0E0;">
+                    Ask LubePilot for OEM recommendations, equivalent oil products, or used oil analysis interpretation. Our proprietary models cut down diagnosis time from hours to seconds.
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+
+
+    <!-- Footer -->
+    <footer class="bg-black-bg pt-8 pb-4">
+        <!-- Thin Red Divider Line -->
+        <div class="h-0.5 w-full bg-accent-red mb-6"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <p class="text-sm" style="color: #FFD700;">
+                &copy; 2025 LubePilot | Designed by Umer Khan
+            </p>
+        </div>
+    </footer>
+    
+    <!-- Removed AI image generation script for local file stability -->
+
+<link
+  href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css"
+  rel="stylesheet"
+/>
+
+<script type="module">
+  import { createChat } from "https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js";
+
+  createChat({
+    mode: "window", // Floating chat window
+    webhookUrl: "http://localhost:5678/webhook/6ba56074-537b-4b66-8b1f-ce2ccc5c71af/chat",
+
+    // 🟡 Theme — matches LubePilot's dark-golden-red style
+    theme: {
+      primaryColor: "#FFD700", // Golden accent
+      backgroundColor: "#0B0B0B", // Deep black
+      textColor: "#E0E0E0", // Soft white text
+      headerColor: "#C00000", // Red header bar
+      inputBackgroundColor: "#1A1A1A", // Chat input background
+      inputTextColor: "#E0E0E0", // Input text color
+      bubbleBackgroundColor: "#1A1A1A", // Bot message bubble
+      bubbleTextColor: "#FFD700", // Bot text color
+      userBubbleBackgroundColor: "#C00000", // User message bubble
+      userBubbleTextColor: "#FFFFFF" // User text color
+    },
+
+    // 🌍 Text and labels
+    i18n: {
+      en: {
+        title: "LubePilot - AI Lubricant Advisor",
+        subtitle: "Welcome"
+      }
+    },
+
+    // 💬 Initial bot messages
+    initialMessages: [
+      "Hello! I am LubePilot 👋",
+      "Please select an option below:",
+      "Option 1: To find the correct lubricant for your machinery",
+      "Option 2: To analyze a used oil report"
+    ]
+  });
+</script>
+
+</body>
+</html>
