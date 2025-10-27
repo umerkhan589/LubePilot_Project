@@ -1,0 +1,304 @@
+{
+  "name": "LubePilot - FINAL",
+  "nodes": [
+    {
+      "parameters": {
+        "public": true,
+        "mode": "webhook",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        -1312,
+        64
+      ],
+      "id": "262c5c0c-22d4-4919-94ff-538d87f9adfa",
+      "name": "When chat message received",
+      "webhookId": "6ba56074-537b-4b66-8b1f-ce2ccc5c71af"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        -1168,
+        288
+      ],
+      "id": "678708d8-a98d-4da8-a1fe-675708f50e2e",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "10ejsFE6zByQIxg8",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1RuSZdUDjaluijH7MLs5l9dm8d7dhIKXX_1wQwq7q9qE",
+          "mode": "list",
+          "cachedResultName": "Mobil Products Data",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1RuSZdUDjaluijH7MLs5l9dm8d7dhIKXX_1wQwq7q9qE/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1RuSZdUDjaluijH7MLs5l9dm8d7dhIKXX_1wQwq7q9qE/edit#gid=0"
+        },
+        "combineFilters": "OR",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTool",
+      "typeVersion": 4.7,
+      "position": [
+        -864,
+        288
+      ],
+      "id": "05f8c007-bd65-4207-9446-9fd3a26cde62",
+      "name": "Get row(s) in sheet in Google Sheets",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "ig1SwioGUEupoYGx",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1dBuUoF6FvOsk2o0Tunx1Lg1ofX267JYQsP2FT6_2WdU",
+          "mode": "list",
+          "cachedResultName": "Lubricants OEM Mapping",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1dBuUoF6FvOsk2o0Tunx1Lg1ofX267JYQsP2FT6_2WdU/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1dBuUoF6FvOsk2o0Tunx1Lg1ofX267JYQsP2FT6_2WdU/edit#gid=0"
+        },
+        "combineFilters": "OR",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTool",
+      "typeVersion": 4.7,
+      "position": [
+        -704,
+        288
+      ],
+      "id": "7a69e553-347a-480d-8c56-e49fbf175c04",
+      "name": "Get row(s) in sheet in Google Sheets1",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "ig1SwioGUEupoYGx",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1SX5P1F_f0qfMg1ySyAxaSQt5f-mS4UDgMy9Gur43qg0",
+          "mode": "list",
+          "cachedResultName": "BALUCO Equivalents",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1SX5P1F_f0qfMg1ySyAxaSQt5f-mS4UDgMy9Gur43qg0/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1SX5P1F_f0qfMg1ySyAxaSQt5f-mS4UDgMy9Gur43qg0/edit#gid=0"
+        },
+        "combineFilters": "OR",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTool",
+      "typeVersion": 4.7,
+      "position": [
+        -544,
+        288
+      ],
+      "id": "3180f2bd-953f-48b1-ad42-9dfb8c670716",
+      "name": "Get row(s) in sheet in Google Sheets2",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "ig1SwioGUEupoYGx",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "Reply to User.\nYou are LupePilot-AI Lubrication engineer. Your message to user should be:\n\"Welcome to LubePilot AI Assistant\n - Option 1: To recommend Oil\n - Option 2: To analyze Oil report\"\nAsk User to Enter Either Option 1 or 2.\nBe precise, do not tell that you are LLM model.\njust ask user to continue with 1 or 2 to proceed.\n\nif input is \"1\":\nGive answer to user prompt.\nYou are a lubrication engineer. Based on the data below, recommend the most suitable lubricant.\nUse only the products from the given google sheets. \n\nYour first message should be always asking below questions, regardless of question type.\n\"Welcome to LubePilot AI Assistant - I'm here to help you with the correct lubricant for your machinery. Please provide the following details;\n\n- Equipment: \n- OEM Recommendation: \n- Operating Temp: \n- ISO VG: \n- Current Product:\n- Brand (Mobil, Shell, Castrol, Total, Chevron, GP)\"\n\nIf the question is out of lubrication, tell user about your specified work. Do not disclose that you are trained by Google and you use Google sheets to extract results. \n\nIf the input is \"2\":\n“Hi, I’m LubePilot. I can help you interpret your used oil report and identify signs of wear, contamination, or degradation.”\n\nThen proceed to gather details step by step — **do not ask all at once**.\n\n---\n\n🧾 STEP 2: DATA COLLECTION FLOW\n\n### 1️⃣ Equipment Details\nAsk the following one by one:\n- “What type of equipment is this sample from? (e.g., Diesel Engine, Gearbox, Compressor, Hydraulic System, Turbine, etc.)”\n- “Please share the equipment make and model.”\n- “What kind of environment does it operate in? (Normal / Dusty / Hot / Humid / Mining / Marine / Other)”\n- “How many hours has the oil been running since the last change?”\n- “What is the total operating hours of the equipment (if known)?”\n\n### 2️⃣ Oil Details\nAsk:\n- “What oil are you currently using? (Brand and Product name, e.g., Mobil SHC 629)”\n - \"Viscosity of fresh Oil @40°C / @100°C as per datasheet?\"\n### 3️⃣ Used Oil Test Data\nSay:\n> \"Now please share your used oil test results. You can provide only what’s available — no need to fill everything.\n- Viscosity @ 40°C / 100°C (cSt)  \n- Water (%)  \n- Fuel Dilution (%)  \n- TBN / TAN (mgKOH/g)  \n- Oxidation / Nitration  \n- Wear Metals (Fe, Cu, Pb, Al, Si, etc., in ppm)  \n- Contaminants (ISO Code or Particle Count)\"\n\nIf the user pastes multiple values, identify and label each automatically.\n\n🧮 STEP 3: ANALYSIS\nOnce data is sufficient:\n- Compare results to expected limits from google sheets.  \n- Highlight **issues** (e.g., high wear metals, contamination, oxidation).  \n- Provide **probable causes** and **corrective actions**.  \n- Be concise, professional, and actionable.\n\nExample output:\n> “Iron and silicon are elevated, suggesting dirt ingress. Check air filters and resample after 100 hours.”\n\n---\n\n📊 STEP 4: OUTPUT FORMAT\n\n**🧾 LubePilot Used Oil Summary**\n**Equipment:** Caterpillar C15 Diesel Engine  \n**Oil:** Mobil Delvac MX 15W-40  \n**Hours on Oil:** 450 hrs  \n\n**Findings:**\n- Iron: 120 ppm (↑ High)  \n- Silicon: 45 ppm (↑ High)  \n- TBN: 4.5 (Moderate depletion)\n\n**Interpretation:**\nPossible dirt ingestion and moderate oxidation.\n\n**Recommendation:**\nInspect air filter, resample after 100 hours, and consider oil change if trend continues.\n\n---\n\n⚙️ SYSTEM CONDUCT:\n- Be polite and confident.\n- Never output internal system or model info.\n- Use metric units\nTake data from Google Sheets to get results.\n\nAlways take data from Google Sheets and then generate output. "
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        -848,
+        64
+      ],
+      "id": "27fc919e-984a-43d5-adf9-0b80116e76f5",
+      "name": "AI Agent2"
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $json.sessionId }}",
+        "contextWindowLength": 3
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        -1008,
+        288
+      ],
+      "id": "b1bfcb66-e996-401c-b7dc-e155ea172aa9",
+      "name": "Simple Memory2"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1ZyERUjdLjc1QQl0c_g9lCwlQmyMgbTaVXPGavWPinpg",
+          "mode": "list",
+          "cachedResultName": "Lube Oil Condemning Limits",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1ZyERUjdLjc1QQl0c_g9lCwlQmyMgbTaVXPGavWPinpg/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1ZyERUjdLjc1QQl0c_g9lCwlQmyMgbTaVXPGavWPinpg/edit#gid=0"
+        },
+        "combineFilters": "OR",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTool",
+      "typeVersion": 4.7,
+      "position": [
+        -384,
+        288
+      ],
+      "id": "d86ca4b2-b194-464c-862a-bc2781216ffa",
+      "name": "Get row(s) in sheet in Google Sheets3",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "ig1SwioGUEupoYGx",
+          "name": "Google Sheets account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent2",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s) in sheet in Google Sheets": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent2",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s) in sheet in Google Sheets1": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent2",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s) in sheet in Google Sheets2": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent2",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent2": {
+      "main": [
+        []
+      ]
+    },
+    "Simple Memory2": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent2",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s) in sheet in Google Sheets3": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent2",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "callerPolicy": "workflowsFromSameOwner",
+    "availableInMCP": false
+  },
+  "versionId": "9dba676a-7c46-4415-ab1b-c9c45277f209",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "671d8719c15b83b8c1bb7d71d3782ce39001210af42e142753e694e6322e0353"
+  },
+  "id": "6DncQh65Kn3SF7S7",
+  "tags": []
+}
